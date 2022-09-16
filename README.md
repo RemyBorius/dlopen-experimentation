@@ -1,6 +1,6 @@
 # dlopen experimentation
 
-This repository is a test on dlopen usage as I am personally running into some very special cases in C++ and I can't find a way to make it work properly in my case :
+This repository is a test on dlopen usage as I am personally running into some very special cases in C++ :
 
  * **How do I load a shared library with dlopen WITHOUT having to modify it ?**
 
@@ -64,19 +64,23 @@ Good news, it's working well too !
 
 ### Step 3 : having the same result as step 2, BUT now it's forbidden to modify the Hello class so it's possible import it with dlopen
 
-Now is the real challenge. I can't modify the Hello class. It's where I need some help.
-
+Now is the real challenge. I can't modify the Hello class. It's where I need some help.  
 My idea was to create the `HelloTampon` class that inherit of both the `Hello` class and the `helloInterface` class, so I can use it as the `Hello` class and I can modify it at will as I create it myself.  
 
-But so far I'm stuck at the loading of the library ... :/
+And it works now ! big joy rn
 
 > `case_3` is my example, to test it :
 >
 > * compile the `hello3` lib
 > * compile the `helloTampon` lib
 > * compile and run `case_3_dlopen` executable
-> 
-> I get this error : 
-> `Cannot load library: ./libhelloTampon.so: undefined symbol: _ZTI14HelloInterface`
 
-Please help :D
+### Step 4 : dlmopen and some verifiactions
+
+I used `dlmopen` to load separately two version of the same library
+I added a global variable to see if the two versions are really independent. And they are !
+
+## Conclusion
+
+Total success !  
+I want to thank people from `Together C & C++` for there help and there will to help ! (especially Dot)

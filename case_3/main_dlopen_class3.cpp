@@ -6,8 +6,8 @@ int main() {
     using namespace std;
 
     // load the library
-    void* hello = dlopen("./libhelloTampon.so", RTLD_NOW);
-    if (!hello) {
+    void* helloTampon = dlopen("./libhelloTampon.so", RTLD_NOW);
+    if (!helloTampon) {
         cerr << "Cannot load library: " << dlerror() << '\n';
         return 1;
     }
@@ -16,14 +16,14 @@ int main() {
     dlerror();
 
     // load the symbols
-    create_t* create_hello = (create_t*) dlsym(hello, "create");
-    const char* dlsym_error = dlerror();
+    create_t* create_hello = (create_t*) dlsym(helloTampon, "create");
+    const char *dlsym_error = dlerror();
     if (dlsym_error) {
         cerr << "Cannot load symbol create: " << dlsym_error << '\n';
         return 1;
     }
 
-    destroy_t* destroy_hello = (destroy_t*) dlsym(hello, "destroy");
+    destroy_t* destroy_hello = (destroy_t*) dlsym(helloTampon, "destroy");
     dlsym_error = dlerror();
     if (dlsym_error) {
         cerr << "Cannot load symbol destroy: " << dlsym_error << '\n';
@@ -41,5 +41,5 @@ int main() {
     destroy_hello(helloInterface);
 
     // unload the triangle library
-    dlclose(hello);
+    dlclose(helloTampon);
 }

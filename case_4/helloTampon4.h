@@ -1,8 +1,8 @@
 #ifndef HELLOTAMPON_H
 #define HELLOTAMPON_H
 
-#include "hello3.h"
-#include "helloInterface3.h"
+#include "hello4.h"
+#include "helloInterface4.h"
 
 class HelloTampon : public Hello, public HelloInterface {
 public:

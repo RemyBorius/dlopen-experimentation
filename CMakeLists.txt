@@ -21,21 +21,26 @@ add_library(hello2 SHARED
 add_executable(case_2_dlopen
         ./case_2/main_dlopen_class.cpp)
 
-#### case 2 bis ###
-#add_library(triangle SHARED
-#        ./case_2_bis/triangle.cpp)
-## the executable that ll use the hello shared lib
-#add_executable(case_2_bis
-#        ./case_2_bis/main_2_bis.cpp)
-
 ### case 3 ###
-# the hello2 shared library
+# the hello3 shared library
 add_library(hello3 SHARED
         ./case_3/hello3.cpp)
-
 add_library(helloTampon SHARED
         ./case_3/helloTampon.cpp)
+target_link_libraries(helloTampon hello3)
 
 # the executable that ll use the hello shared lib
 add_executable(case_3_dlopen
         ./case_3/main_dlopen_class3.cpp)
+
+### case 4 ###
+# the hello4 shared library
+add_library(hello4 SHARED
+        ./case_4/hello4.cpp)
+add_library(helloTampon4 SHARED
+        ./case_4/helloTampon4.cpp)
+target_link_libraries(helloTampon4 hello4)
+
+# the executable that ll use the hello shared lib
+add_executable(case_4_dlopen
+        ./case_4/main_dlopen_class4.cpp)
