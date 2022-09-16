@@ -1,5 +1,8 @@
 #include "helloTampon.h"
 #include "iostream"
+
+HelloTampon::~HelloTampon() {}
+
 int HelloTampon::helloInterfaceMethod(int otherInt) {
     this->helloInterfaceInt = this->helloMethod(otherInt);
     return this->helloInterfaceInt;

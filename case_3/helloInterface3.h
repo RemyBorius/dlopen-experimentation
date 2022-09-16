@@ -3,7 +3,7 @@
 
 class HelloInterface {
 public:
-    virtual ~HelloInterface();
+    virtual ~HelloInterface() = 0;
     int helloInterfaceInt = 0;
     virtual int helloInterfaceMethod(int otherInt) = 0;
 };

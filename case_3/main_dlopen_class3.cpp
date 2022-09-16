@@ -5,7 +5,7 @@
 int main() {
     using namespace std;
 
-    // load the triangle library
+    // load the library
     void* hello = dlopen("./libhelloTampon.so", RTLD_NOW);
     if (!hello) {
         cerr << "Cannot load library: " << dlerror() << '\n';
