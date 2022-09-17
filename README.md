@@ -83,4 +83,4 @@ I added a global variable to see if the two versions are really independent. And
 ## Conclusion
 
 Total success !  
-I want to thank people from `Together C & C++` for there help and there will to help ! (especially Dot)
+I want to thank people from the `Together C & C++` discord server for there help and there will to help ! (especially Dot)
