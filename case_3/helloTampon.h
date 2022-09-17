@@ -6,6 +6,7 @@
 
 class HelloTampon : public Hello, public HelloInterface {
 public:
+    ~HelloTampon() override = default;
     int helloInterfaceMethod(int otherInt) override;
 };
 
