@@ -1,8 +1,8 @@
 # dlopen experimentation
 
-This repository is a test on dlopen usage as I am personally running into some very special cases in C++ :
+This repository is a test on dlopen usage : load functions, classes, and load classes WITHOUT extern "C" into the lib to load
 
- * **How do I load a shared library with dlopen WITHOUT having to modify it ?**
+ * **How do I load a shared library with dlopen WITHOUT having to modify it with extern "C" or other ?**
 
 > I use gcc 10 to compile
 
@@ -27,7 +27,7 @@ So I came out with a solution : **instead of loading only once the lib and getti
 
 So I discovered the dlopen library, that can do exactly what I want ... but more easily in C than in C++ :/
 
-### Step 1 : having a simple working example of loading a shared lib with dlopen 
+### Step 1 : having a simple working example of loading function from a shared lib with dlopen
 
 
 Here's the first issue, and how I solved it :
@@ -53,7 +53,7 @@ This solution works well ! only problem : it does work only with 'normal' functi
 ### Step 2 : having a working example of loading a class and its methods
 
 The `case_2` folder is my attempt to import both the object and its methods, I inspired my attempt by [the part 3.3 Loading Classes](https://tldp.org/HOWTO/C++-dlopen/thesolution.html).  
-The main idea is to use polymorphism as a workaround to use the imported object and its methods (check the link for more info)
+The main idea is to use polymorphism as a workaround to use the imported object and its methods (check the link for more info). In a nutshell, it use a new class that act like an interface of the original class. 
 
 Good news, it's working well too ! 
 
@@ -62,12 +62,13 @@ Good news, it's working well too !
 > * compile the `hello2` lib
 > * compile and run `case_2_dlopen` executable
 
-### Step 3 : having the same result as step 2, BUT now it's forbidden to modify the Hello class so it's possible import it with dlopen
+### Step 3 : having the same result as step 2, BUT now it's forbidden to modify the Hello class with extern "C"
 
-Now is the real challenge. I can't modify the Hello class. It's where I need some help.  
-My idea was to create the `HelloTampon` class that inherit of both the `Hello` class and the `helloInterface` class, so I can use it as the `Hello` class and I can modify it at will as I create it myself.  
+Now is the real challenge. I can't add extern "C" to the Hello class.
 
-And it works now ! big joy rn
+My idea is to create the `HelloTampon` class that inherit of both the `Hello` class and the `helloInterface` class, so I can use it as the `Hello` class and I can modify it at will as I create it myself.
+
+And it works too !
 
 > `case_3` is my example, to test it :
 >
@@ -83,4 +84,4 @@ I added a global variable to see if the two versions are really independent. And
 ## Conclusion
 
 Total success !  
-I want to thank people from the `Together C & C++` discord server for there help and there will to help ! (especially Dot)
+Big thank people from the `Together C & C++` discord server for there help ! (especially Dot)
