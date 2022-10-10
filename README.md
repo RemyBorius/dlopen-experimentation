@@ -1,4 +1,4 @@
-# dlopen experimentation
+# dlopen tutorial
 
 This repository is a test on dlopen usage : load functions, classes, and load classes WITHOUT extern "C" into the lib to load
 
